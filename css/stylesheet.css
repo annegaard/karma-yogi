@@ -1,0 +1,247 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #f9fafb;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 14px;
+    line-height: 22px;
+    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #666;
+}
+
+/* Typography */
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Oswald', sans-serif;
+    color: #333333;
+    font-weight: 300;
+}
+
+.title {
+    font-size: 4rem;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 17px;
+    line-height: 100px;
+    text-align: center;
+    margin: 0;
+}
+
+.subtitle {
+    font-size: 1.7rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-left: 1em;
+    position: relative;
+}
+
+.subtitle::before {
+    content: 'clean';
+    font-size: 0.8rem;
+    color: #888;
+    position: absolute;
+    top: -30px;
+}
+
+@media screen and (min-width: 400px) {
+    .subtitle {
+        text-align: center;
+        margin-left: 0;
+    }
+}
+
+@media screen and (min-width: 670px) {
+    .subtitle::before {
+        left: 275px;
+    }
+}
+
+p {
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
+.bathroom {
+    font-weight: 700;
+}
+
+/* Layout */
+
+header {
+    background-image: url(../img/top.jpg), linear-gradient( rgba(0,0,0,.50), rgba(0,0,0,.50));
+    background-blend-mode: overlay;
+    background-size: cover;
+    background-position-y: 50%;
+    padding: 12em 1em;
+}
+
+main {
+    width: 90%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 5em 0;
+}
+
+.subtitle-container {
+    background-color: #e4e6e7;
+    padding: 2.5em 0 2em 0;
+    cursor: pointer;
+    margin-top: 2em;
+    position: relative;
+}
+
+.list-container {
+    max-height: 0;
+    background-color: #f2f4f5;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+.list-container-content {
+    padding: 2em;
+}
+
+/* Open and close arrow */
+
+.subtitle-container::after {
+    content: ' ';
+    width: 15px;
+    height: 15px;
+    right: 50px;
+    top: 50px;
+    transform: rotate(45deg);
+    position: absolute;
+    box-shadow: 2px 2px 0px 0px #333333;
+}
+
+.subtitle-container.active::after {
+    transform: rotate(-135deg);
+    top: 60px;
+}
+
+/* Checklists styles */
+
+.list-item {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #e4e6e7;
+}
+
+input {
+    margin-right: 1em;
+}
+
+label {
+    margin: 1em 0;
+    cursor: pointer;
+}
+
+[type="checkbox"] {
+    opacity: 0;
+    position: absolute;
+}
+
+.custom-checkbox {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    cursor: pointer;
+    border: 1px solid #666;
+    border-radius: 50%;
+    margin-right: 0.5em;
+    transform: scale(1);
+    transition: transform 200ms ease-in-out;
+}
+
+.list-item:hover .custom-checkbox,
+[type="checkbox"]:focus + label .custom-checkbox {
+    transform: scale(1.2);
+    color: #333333;
+}
+
+[type="checkbox"]:checked + label .custom-checkbox {
+    background: #666;
+    border-color: #666;
+    box-shadow: inset 0 0 0 2px #f2f4f5;
+}
+
+[type="checkbox"]:checked + label {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+/* Week styles */
+
+.week-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 2em 0em;
+}
+
+.week-item {
+    background-color: #333333;
+    color: #e4e6e7;
+    text-transform: uppercase;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.5em;
+}
+
+@media screen and (min-width: 670px) {
+    .week-container {
+        padding: 2em 4em;
+    }
+
+    .week-item {
+        margin: 0.8em;
+    }
+}
+
+.week-item-active {
+    transform: scale(1);
+    transition: transform 150ms ease-in-out;
+    cursor: pointer;
+    border: 2px solid #f2f4f5;
+    box-shadow: 0px 0px 0px 2px #333333;
+    transition: all 200ms cubic-bezier(.28,1.48,.53,1.23);
+}
+
+.week-item-active:hover {
+    transform: scale(1.2);
+    background-color: #666;
+    box-shadow: 0px 0px 0px 2px #666;
+}
+
+.focus {
+    transform: scale(1.1);
+    background-color: #666;
+    box-shadow: 0px 0px 0px 2px #666;
+}
+
+.week-item-inactive {
+    background-color: #e4e6e7;
+    color: #333333;
+}
+
+.tuesday-todo,
+.wednesday-todo, 
+.friday-todo, 
+.sunday-todo {
+    display: none;
+}
+
+.toggle-display {
+    display: block;
+}
