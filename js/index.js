@@ -1,7 +1,7 @@
 // Hide and show checklist when subtitle is clicked
 
 const icons = document.querySelectorAll('.icon')
-const subtitleContainers = document.querySelectorAll('.subtitle-container')
+const subtitleContainers = document.querySelectorAll('.accordion-item-header')
 
 subtitleContainers.forEach(subtitleContainer => {
     subtitleContainer.addEventListener('click', event => {
@@ -105,4 +105,3 @@ function showSundayTodo() {
 }
 
 weekSunday.addEventListener('click', showSundayTodo)
-

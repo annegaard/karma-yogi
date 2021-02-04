@@ -72,42 +72,32 @@ p {
 /* Layout */
 
 header {
-    background-image: url(../img/top.jpg), linear-gradient( rgba(0,0,0,.50), rgba(0,0,0,.50));
+    background-image: url(../img/top.jpg), linear-gradient( rgba(0,0,0,.25), rgba(0,0,0,.25));
     background-blend-mode: overlay;
     background-size: cover;
-    background-position-y: 50%;
+    background-position-x: 50%;
+    background-position-y: 70%;
     padding: 12em 1em;
 }
 
-main {
+.accordion {
     width: 90%;
     max-width: 600px;
     margin: 0 auto;
     padding: 5em 0;
 }
 
-.subtitle-container {
+.accordion-item-header {
     background-color: #e4e6e7;
     padding: 2.5em 0 2em 0;
-    cursor: pointer;
     margin-top: 2em;
     position: relative;
-}
-
-.list-container {
-    max-height: 0;
-    background-color: #f2f4f5;
-    overflow: hidden;
-    transition: max-height 0.2s ease-out;
-}
-
-.list-container-content {
-    padding: 2em;
+    cursor: pointer;
 }
 
 /* Open and close arrow */
 
-.subtitle-container::after {
+.accordion-item-header::after {
     content: ' ';
     width: 15px;
     height: 15px;
@@ -118,9 +108,20 @@ main {
     box-shadow: 2px 2px 0px 0px #333333;
 }
 
-.subtitle-container.active::after {
+.accordion-item-header.active::after {
     transform: rotate(-135deg);
     top: 60px;
+}
+
+.accordion-item-body {
+    max-height: 0;
+    background-color: #f2f4f5;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+.accordion-item-body-content {
+    padding: 2em;
 }
 
 /* Checklists styles */
@@ -141,8 +142,7 @@ label {
 }
 
 [type="checkbox"] {
-    opacity: 0;
-    position: absolute;
+    display: none;
 }
 
 .custom-checkbox {
